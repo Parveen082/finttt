@@ -13,7 +13,7 @@ const connectDB = async () => {
     }
 };
 
-// Define Product schema
+
 const Product = mongoose.models.Product || mongoose.model('Product', new mongoose.Schema({
     mobile: String,
     name: String,
@@ -24,14 +24,10 @@ const Product = mongoose.models.Product || mongoose.model('Product', new mongoos
     pancard: String
 }));
 
-app.use(express.json()); // Middleware to parse JSON
+app.use(express.json()); 
 
-// Root API - Returns "Hello, World!"
-app.get('/', (req, res) => {
-    res.status(200).send('Hello, World!');
-});
 
-// POST API - Create a product
+
 app.post('/products', async (req, res) => {
     await connectDB();
     try {
@@ -42,7 +38,7 @@ app.post('/products', async (req, res) => {
     }
 });
 
-// GET API - Fetch all products
+
 app.get('/products', async (req, res) => {
     await connectDB();
     try {
@@ -53,5 +49,5 @@ app.get('/products', async (req, res) => {
     }
 });
 
-// Start the server
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
