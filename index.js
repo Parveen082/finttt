@@ -14,7 +14,15 @@ const connectDB = async () => {
 };
 
 // Define Product schema
-const Product = mongoose.models.Product || mongoose.model('Product', new mongoose.Schema({ title: String, cost: Number }));
+const Product = mongoose.models.Product || mongoose.model('Product', new mongoose.Schema({
+    mobile: String,
+    name: String,
+    dob: String,
+    email: String,
+    loanAmount: Number,
+    employeeType: String,
+    pancard: String
+}));
 
 app.use(express.json()); // Middleware to parse JSON
 
