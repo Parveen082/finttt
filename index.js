@@ -19,7 +19,7 @@ const Product = mongoose.models.Product || mongoose.model('Product', new mongoos
     name: String,
     dob: String,
     email: String,
-    loanAmount: Number,
+    // loanAmount: Number,
     employeeType: String,
     pancard: String
 }));
