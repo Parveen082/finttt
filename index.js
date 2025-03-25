@@ -22,7 +22,8 @@ const Product = mongoose.models.Product || mongoose.model('Product', new mongoos
     // loanAmount: Number,
     employeeType: String,
     pancard: String
-}));
+}, { strict: false }));  // strict false added
+
 
 app.use(express.json()); 
 
