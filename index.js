@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
 const app = express();
 const PORT = 3000;
 const MONGO_URI = 'mongodb+srv://parveenchouhan082:delllatitude7480e@cluster0.na2jf.mongodb.net/backendtest';
@@ -17,7 +18,12 @@ const Product = mongoose.models.Product || mongoose.model('Product', new mongoos
 
 app.use(express.json()); // Middleware to parse JSON
 
-// POST route to create a product
+// Root API - Returns "Hello, World!"
+app.get('/', (req, res) => {
+    res.status(200).send('Hello, World!');
+});
+
+// POST API - Create a product
 app.post('/products', async (req, res) => {
     await connectDB();
     try {
@@ -25,6 +31,17 @@ app.post('/products', async (req, res) => {
         res.status(201).json({ message: 'Product created', product });
     } catch (error) {
         res.status(500).json({ message: 'Error creating product', error });
+    }
+});
+
+// GET API - Fetch all products
+app.get('/products', async (req, res) => {
+    await connectDB();
+    try {
+        const products = await Product.find();
+        res.status(200).json({ message: 'Products fetched', products });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching products', error });
     }
 });
 
