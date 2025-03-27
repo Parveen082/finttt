@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const PORT = 3000;
-const MONGO_URI = 'mongodb+srv://parveenchouhan082:delllatitude7480e@cluster0.na2jf.mongodb.net/backendtest';
+const MONGO_URI = process.env.MONGO_URI;
 
 let isConnected = false;
 const connectDB = async () => {
@@ -22,7 +22,7 @@ const Product = mongoose.models.Product || mongoose.model('Product', new mongoos
     // loanAmount: Number,
     employeeType: String,
     pancard: String
-}, { strict: false }));  // strict false added
+}, { strict: false }));  
 
 
 app.use(express.json()); 
@@ -40,15 +40,6 @@ app.post('/products', async (req, res) => {
 });
 
 
-app.get('/products', async (req, res) => {
-    await connectDB();
-    try {
-        const products = await Product.find();
-        res.status(200).json({ message: 'Products fetched', products });
-    } catch (error) {
-        res.status(500).json({ message: 'Error fetching products', error });
-    }
-});
 
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server  running on port ${PORT}`));
