@@ -31,12 +31,18 @@ app.use(express.json());
 
 // Define the Product Schema where only Mobile is Unique
 const ProductSchema = new mongoose.Schema({
-    mobile: { type: String, unique: true, required: true },  // Only mobile is unique
+    mobile: { type: String, unique: true, required: true },  
     name: { type: String ,required: true },
     dob: { type: String ,required: true  },
-    email: { type: String , required: true },   // Email allows duplicates
+    email: { type: String , required: true },   
     employeeType: { type: String ,required: true  },
-    pancard: { type: String ,required: true  }  // PAN card allows duplicates
+    pancard: { type: String ,required: true  }, 
+    city: { type: String ,required: true  },
+    gender: { type: String ,required: true  },
+    state: { type: String ,required: true  },
+    pincode: { type: String ,required: true  } ,
+    income: { type: String ,required: true  } 
+    
 }, { strict: false });
 
 const Product = mongoose.models.Product || mongoose.model('Product', ProductSchema);
