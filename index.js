@@ -36,12 +36,7 @@ const ProductSchema = new mongoose.Schema({
     dob: { type: String ,required: true  },
     email: { type: String , required: true },   
     employeeType: { type: String ,required: true  },
-    pancard: { type: String ,required: true  }, 
-    city: { type: String ,required: true  },
-    gender: { type: String ,required: true  },
-    state: { type: String ,required: true  },
-    pincode: { type: String ,required: true  } ,
-    income: { type: String ,required: true  } 
+    pancard: { type: String ,required: true  }
     
 }, { strict: false });
 
